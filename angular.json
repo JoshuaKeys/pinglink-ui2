@@ -3,5 +3,52 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "pinglink": {
+      "projectType": "library",
+      "root": "projects/pinglink",
+      "sourceRoot": "projects/pinglink/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pinglink/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pinglink/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pinglink/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/pinglink/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/pinglink/**/*.ts",
+              "projects/pinglink/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
