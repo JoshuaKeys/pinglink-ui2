@@ -2,7 +2,12 @@ pipeline {
     agent any
 
     environment {
+        GIT_AUTHOR_NAME = 'Joshua Oguma'
+        GIT_AUTHOR_EMAIL = 'joshua.oguma@outlook.com'
         NPM_TOKEN = credentials('NPM_TOKEN')
+    }
+    triggers {
+        pollSCM('*/1 * * * *')
     }
     stages {
         stage('Install Deps') {
