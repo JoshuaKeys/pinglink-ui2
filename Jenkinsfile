@@ -54,7 +54,7 @@ pipeline {
                                     echo "$SSH_KEY" > ~/.ssh/id_rsa
                                     git add .
                                     git commit -m "release"
-                                    git push -u origin master
+                                    git push origin master
                                 '''
                             }
 
