@@ -36,6 +36,8 @@ pipeline {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
                     sh 'git status'
+                    sh 'git add .'
+                    sh 'git push origin master'
                 }
             }
         }
