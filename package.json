@@ -1,6 +1,6 @@
 {
   "name": "pinglink-ui",
-  "version": "0.0.2",
+  "version": "0.0.0-development",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "build:pinglink": "ng build pinglink"
+    "build:pinglink": "ng build pinglink",
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +45,14 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "ng-packagr": "^16.0.0",
-    "typescript": "~5.0.2"
+    "typescript": "~5.0.2",
+    "semantic-release": "^21.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JoshuaKeys/pinglink-ui.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
   }
 }
