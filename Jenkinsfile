@@ -18,13 +18,13 @@ pipeline {
                 }
             }
         }
-        stage('Patch Version') {
-            steps {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm version patch'
-                }
-            }
-        }
+        // stage('Patch Version') {
+        //     steps {
+        //         nodejs(nodeJSInstallationName: 'nodejs') {
+        //             sh 'npm version patch'
+        //         }
+        //     }
+        // }
         stage('Build') {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
