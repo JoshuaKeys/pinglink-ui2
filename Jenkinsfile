@@ -50,7 +50,6 @@ pipeline {
                         ]) {
                             nodejs(nodeJSInstallationName: 'nodejs') {
                                 sh '''
-                                    echo "_auth = ${NPM_TOKEN}" >> .npmrc
                                     npm run semantic-release
                                 '''
                             }
