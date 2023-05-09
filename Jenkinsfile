@@ -51,7 +51,7 @@ pipeline {
                         ]) {
                             nodejs(nodeJSInstallationName: 'nodejs') {
                                 sh '''
-                                    echo "$SSH_KEY" > ~/.ssh/id_rsa
+                                    echo '$SSH_KEY' > ~/.ssh/id_rsa
                                     git add .
                                     git commit -m "release"
                                     git push origin master
