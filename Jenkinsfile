@@ -5,6 +5,7 @@ pipeline {
         GIT_AUTHOR_NAME = 'Joshua Oguma'
         GIT_AUTHOR_EMAIL = 'joshua.oguma@outlook.com'
         NPM_TOKEN = credentials('NPM_TOKEN')
+        GH_TOKEN = credentials('GH_TOKEN')
     }
     triggers {
         pollSCM('*/1 * * * *')
@@ -34,7 +35,7 @@ pipeline {
         stage('Publish Npm Library') {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm publish'
+                    sh 'npx semantic-release'
                 }
             }
         }
