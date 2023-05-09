@@ -18,20 +18,20 @@ pipeline {
                 }
             }
         }
-        stage('Patch Version') {
-            steps {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm version patch'
-                }
-            }
-        }
-        stage('Build') {
-            steps {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm run build:pinglink'
-                }
-            }
-        }
+        // stage('Patch Version') {
+        //     steps {
+        //         nodejs(nodeJSInstallationName: 'nodejs') {
+        //             sh 'npm version patch'
+        //         }
+        //     }
+        // }
+        // stage('Build') {
+        //     steps {
+        //         nodejs(nodeJSInstallationName: 'nodejs') {
+        //             sh 'npm run build:pinglink'
+        //         }
+        //     }
+        // }
         stage('Publish Npm Library') {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
