@@ -6,6 +6,7 @@ pipeline {
         GIT_AUTHOR_EMAIL = 'joshua.oguma@outlook.com'
         NPM_TOKEN = credentials('NPM_TOKEN')
         GH_TOKEN = credentials('GH_TOKEN')
+        SSH_KEY = credentials('JoshuaKeys')
     }
     triggers {
         pollSCM('*/1 * * * *')
@@ -50,7 +51,10 @@ pipeline {
                         ]) {
                             nodejs(nodeJSInstallationName: 'nodejs') {
                                 sh '''
-                                    npm run semantic-release
+                                    echo "$SSH_KEY" > ~/.ssh/id_rsa
+                                    git add .
+                                    git commit -m "release"
+                                    git push -u origin master
                                 '''
                             }
 
