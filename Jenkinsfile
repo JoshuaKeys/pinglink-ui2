@@ -48,10 +48,13 @@ pipeline {
                             string(credentialsId: 'NPM_TOKEN', variable: 'NPM_TOKEN'),
                             string(credentialsId: 'GH_TOKEN', variable: 'GH_TOKEN')
                         ]) {
-                            sh '''
-                                echo "_auth = ${NPM_TOKEN}" >> .npmrc
-                                npm run semantic-release
-                            '''
+                            nodejs(nodeJSInstallationName: 'nodejs') {
+                                sh '''
+                                    echo "_auth = ${NPM_TOKEN}" >> .npmrc
+                                    npm run semantic-release
+                                '''
+                            }
+
                         }
                     }
                 }
