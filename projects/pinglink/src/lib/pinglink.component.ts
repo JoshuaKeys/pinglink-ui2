@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'lib-pinglink',
   template: `
     <p>
-      pinglink worksss!
+      pinglink works!
     </p>
   `,
   styles: [
