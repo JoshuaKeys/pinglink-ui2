@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "build:pinglink": "ng build pinglink",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release --branches master"
   },
   "private": true,
   "dependencies": {
