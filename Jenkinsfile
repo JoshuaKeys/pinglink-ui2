@@ -35,7 +35,7 @@ pipeline {
         stage('Publish Npm Library') {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm run semantic-release'
+                    sh 'git status'
                 }
             }
         }
