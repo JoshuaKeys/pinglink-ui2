@@ -33,13 +33,30 @@ pipeline {
             }
         }
         stage('Publish Npm Library') {
-            steps {
-                nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'git status'
-                    sh 'git add .'
-                    sh 'git push origin master'
+            when {
+                anyOf {
+                    branch 'master'
                 }
             }
+            stages {
+                stage('publish package') {
+                    when {
+                        branch 'master'
+                    }
+                    steps {
+                        withCredentials([
+                            string(credentialsId: 'NPM_TOKEN', variable: 'NPM_TOKEN'),
+                            string(credentialsId: 'GH_TOKEN', variable: 'GH_TOKEN')
+                        ]) {
+                            sh '''
+                                echo "_auth = ${NPM_TOKEN}" >> .npmrc
+                                npm run semantic-release
+                            '''
+                        }
+                    }
+                }
+            }
+            
         }
     }
 }
