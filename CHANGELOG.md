@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/JoshuaKeys/pinglink-ui/compare/v1.5.0...v1.6.0) (2023-05-21)
+
+
+### Features
+
+* **introduction:** added more docsss ([d572a68](https://github.com/JoshuaKeys/pinglink-ui/commit/d572a68e884232f98a340a3dfa36674cfb182626))
+
 # [1.5.0](https://github.com/JoshuaKeys/pinglink-ui/compare/v1.4.0...v1.5.0) (2023-05-21)
 
 
