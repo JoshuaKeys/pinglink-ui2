@@ -18,5 +18,23 @@ save_versions_list() {
 }
 
 move_versions() {
-    
+    mkdir -p ${DEST}
+    mkdir -p ${TMP_DEST}/${PREVIOUS_VERSIONS_DIR}
+    mkdir -p ${DEST}/${PREVIOUS_VERSIONS_DIR}
+
+    if version_greater_equal ${LATEST_VERSION} ${PREVIOUS_VERSION}
+    then
+        if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
+        then
+    else 
+        if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
+        then
+    fi
+
+    rm -rf ${DEST}
+    mv ${TMP_DEST} ${DEST}
+    save_versions_list
+    echo $LATEST_VERSION > ${DEST}/last_deployed
+    chown -R ${FUNCTIONAL_USER}:${FUNCTIONAL_USER} ${DEST}
+    echo "--- Done ---"
 }
