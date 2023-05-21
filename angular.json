@@ -42,6 +42,24 @@
               "projects/pinglink/**/*.html"
             ]
           }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/pinglink/.storybook",
+            "browserTarget": "pinglink:build",
+            "compodoc": false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/pinglink/.storybook",
+            "browserTarget": "pinglink:build",
+            "compodoc": false,
+            "outputDir": "storybook-static"
+          }
         }
       }
     }

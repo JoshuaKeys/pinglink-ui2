@@ -32,6 +32,13 @@ pipeline {
                 }
             }
         }
+        stage('Build Storybook') {
+            steps {
+                nodejs(nodeJSInstallationName: 'nodejs') {
+                    sh 'npm run build-storybook'
+                }
+            }
+        }
         // stage('Publish Npm Library') {
         //     steps {
         //         nodejs(nodeJSInstallationName: 'nodejs') {
@@ -56,8 +63,7 @@ pipeline {
                     }
                     withCredentials([usernamePassword(credentialsId: 'pinglink-deployer', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh "sshpass -p '${PASSWORD}' ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER} sudo rm -rf ${TMP_DEST}"
-                        sh "sshpass -p '${PASSWORD}' scp -o StrictHostKeyChecking=no  -r ./dist/pinglink  ${USERNAME}@${SERVER}:${TMP_DEST}"
-                        sh "sshpass -p '${PASSWORD}' ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER} ls -ltr"
+                        sh "sshpass -p '${PASSWORD}' scp -o StrictHostKeyChecking=no  -r ./storybook-static  ${USERNAME}@${SERVER}:${TMP_DEST}"
                         sh "sshpass -p '${PASSWORD}' scp -o StrictHostKeyChecking=no scripts/deploy_docs.sh ${USERNAME}@${SERVER}:/tmp/deploy_doc_${BUILD_NUMBER}.sh"
                         sh "sshpass -p '${PASSWORD}' ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER} sudo chmod +x /tmp/deploy_doc_${BUILD_NUMBER}.sh"
                         sh "sshpass -p '${PASSWORD}' ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER} sudo /tmp/deploy_doc_${BUILD_NUMBER}.sh ${TMP_DEST} ${DEST} ${env.LATEST_VERSION} ${FUNCTIONAL_USER}"
