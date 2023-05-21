@@ -26,9 +26,11 @@ move_versions() {
     then
         if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
         then
+            echo "Move current version to previous versions."
     else 
         if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
         then
+            echo "Move deployment version to previous versions."
     fi
 
     rm -rf ${DEST}
