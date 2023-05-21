@@ -56,7 +56,7 @@ pipeline {
                     }
                     withCredentials([usernamePassword(credentialsId: 'pinglink-deployer', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
                         sh "sshpass -p '${PASSWORD}' ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER} sudo rm -rf ${TMP_DEST}"
-                        sh "sshpass -p '${PASSWORD}' scp -o StrictHostKeyChecking=no  -r ./dist/pinglink  ${USERNAME}@${SERVER}:${TMP_DEST}"
+                        sh "sshpass -p '${PASSWORD}' scp -o StrictHostKeyChecking=no  -r ./dist/pinglink  ${USERNAME}@${SERVER}:${TMP_DEST} && ls -ltr"
 
                     }
                 }
