@@ -18,13 +18,6 @@ pipeline {
                 }
             }
         }
-        // stage('Patch Version') {
-        //     steps {
-        //         nodejs(nodeJSInstallationName: 'nodejs') {
-        //             sh 'npm version patch'
-        //         }
-        //     }
-        // }
         stage('Build') {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs') {
@@ -39,13 +32,13 @@ pipeline {
                 }
             }
         }
-        // stage('Publish Npm Library') {
-        //     steps {
-        //         nodejs(nodeJSInstallationName: 'nodejs') {
-        //             sh 'npm run semantic-release'
-        //         }
-        //     }
-        // }
+        stage('Publish Npm Library') {
+            steps {
+                nodejs(nodeJSInstallationName: 'nodejs') {
+                    sh 'npm run semantic-release'
+                }
+            }
+        }
         stage('Deployment') {
             when {
                 branch 'master'
