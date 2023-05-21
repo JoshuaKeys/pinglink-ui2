@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "storybook": "ng run pinglink-ui:storybook",
+    "build:pinglink": "ng build pinglink-ui",
     "build-storybook": "ng run pinglink-ui:build-storybook",
     "semantic-release": "semantic-release --branches master"
   },
