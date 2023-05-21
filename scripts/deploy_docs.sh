@@ -17,27 +17,27 @@ save_versions_list() {
     ls ${DEST}/${PREVIOUS_VERSIONS_DIR} --hide versions-list.json | awk ' BEGIN {ORS = ""; print "[";} { print "\/\@"$0"\/\@";} END {print "]"; }' | sed "s^\"^\\\\\"^g;s^\/\@\/\@^\",\"^g;s^\/\@^\"^g" > ${DEST}/${PREVIOUS_VERSIONS_DIR}/versions-list.json || echo "No previous versions"
 }
 
-# move_versions() {
-#     mkdir -p ${DEST}
-#     mkdir -p ${TMP_DEST}/${PREVIOUS_VERSIONS_DIR}
-#     mkdir -p ${DEST}/${PREVIOUS_VERSIONS_DIR}
+move_versions() {
+    mkdir -p ${DEST}
+    mkdir -p ${TMP_DEST}/${PREVIOUS_VERSIONS_DIR}
+    mkdir -p ${DEST}/${PREVIOUS_VERSIONS_DIR}
 
-#     if version_greater_equal ${LATEST_VERSION} ${PREVIOUS_VERSION}
-#     then
-#         if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
-#         then
-#             echo "Move current version to previous versions."
-#     else 
-#         if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
-#         then
-#             echo "Move deployment version to previous versions."
-#     fi
+    # if version_greater_equal ${LATEST_VERSION} ${PREVIOUS_VERSION}
+    # then
+    #     if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
+    #     then
+    #         echo "Move current version to previous versions."
+    # else 
+    #     if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
+    #     then
+    #         echo "Move deployment version to previous versions."
+    # fi
 
-#     echo "$LATEST_VERSION $PREVIOUS_VERSION"
-#     rm -rf ${DEST}
-#     mv ${TMP_DEST} ${DEST}
-#     save_versions_list
-#     echo $LATEST_VERSION > ${DEST}/last_deployed
-#     chown -R ${FUNCTIONAL_USER}:${FUNCTIONAL_USER} ${DEST}
-#     echo "--- Done ---"
-# }
+    echo "$LATEST_VERSION $PREVIOUS_VERSION"
+    rm -rf ${DEST}
+    mv ${TMP_DEST} ${DEST}
+    save_versions_list
+    echo $LATEST_VERSION > ${DEST}/last_deployed
+    chown -R ${FUNCTIONAL_USER}:${FUNCTIONAL_USER} ${DEST}
+    echo "--- Done ---"
+}
