@@ -11,7 +11,7 @@
         }],
         ["@semantic-release/npm", {
             "npmPublish": true,
-            "pkgRoot": "dist/pinglink"
+            "pkgRoot": "dist/pinglink-ui"
         }],
         "@semantic-release/github",
         ["@semantic-release/git", {
