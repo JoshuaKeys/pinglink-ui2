@@ -27,21 +27,23 @@ move_versions() {
         if [ "$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION" ]
         then
             echo "Move current version to previous versions."
+            mv ${DEST}/${PREVIOUS_VERSIONS_DIR} ${TMP_DEST}
+            mv ${DEST} ${TMP_DEST}/${PREVIOUS_VERSIONS_DIR}/${CUT_PREVIOUS_VERSION}
+        else
+            echo "Major versions are equal."
+            mv ${DEST}/${PREVIOUS_VERSIONS_DIR} ${TMP_DEST}
         fi
     else 
         if [ "$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION" ]
         then
             echo "Move deployment version to previous versions."
+            rm -rf ${DEST}/${PREVIOUS_VERSIONS_DIR}/${CUT_LATEST_VERSION} || echo "No such version"
+            mv ${TMP_DEST} ${DEST}/${PREVIOUS_VERSIONS_DIR}/${CUT_LATEST_VERSION}
+            rm -rf ${DEST}/${PREVIOUS_VERSIONS_DIR}/${CUT_LATEST_VERSION}/${PREVIOUS_VERSIONS_DIR}
+            save_versions_list
+            exit 0
         fi
     fi
-        # if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
-    #     then
-    #         echo "Move current version to previous versions."
-    # else 
-    #     if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
-    #     then
-    #         echo "Move deployment version to previous versions."
-    # fi
 
     echo "$LATEST_VERSION $PREVIOUS_VERSION"
     rm -rf ${DEST}
@@ -51,3 +53,5 @@ move_versions() {
     chown -R ${FUNCTIONAL_USER}:${FUNCTIONAL_USER} ${DEST}
     echo "--- Done ---"
 }
+
+move_versions > /tmp/log.out
