@@ -55,7 +55,9 @@ pipeline {
                         env.LATEST_VERSION = sh(script: "git describe --tags --abbrev=0", returnStdout: true).trim()
                     }
                     withCredentials([usernamePassword(credentialsId: 'pinglink-deployer', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-                        sh "sshpass -p '${PASSWORD}' ssh -o PubKeyAuthentication=no -o PreferredAuthentications=password -o StrictHostKeyChecking=no ${USERNAME}@${SERVER} ls -ltr"
+                        sh "sshpass -p '${PASSWORD}' ssh -o StrictHostKeyChecking=no ${USERNAME}@${SERVER} sudo rm -rf ${TMP_DEST}"
+                        sh "sshpass -p '${PASSWORD}' scp -o StrictHostKeyChecking=no  -r ./dist/pinglink  ${USERNAME}@${SERVER}:${TMP_DEST}"
+
                     }
                 }
             }
