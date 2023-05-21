@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/JoshuaKeys/pinglink-ui/compare/v1.1.0...v1.2.0) (2023-05-21)
+
+
+### Features
+
+* **pinglink:** added ping link change ([ab6c735](https://github.com/JoshuaKeys/pinglink-ui/commit/ab6c735c530ebfade894f9f9bdfdd6c8c95ea678))
+
 # [1.1.0](https://github.com/JoshuaKeys/pinglink-ui/compare/v1.0.3...v1.1.0) (2023-05-10)
 
 
