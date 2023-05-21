@@ -22,9 +22,19 @@ move_versions() {
     mkdir -p ${TMP_DEST}/${PREVIOUS_VERSIONS_DIR}
     mkdir -p ${DEST}/${PREVIOUS_VERSIONS_DIR}
 
-    # if version_greater_equal ${LATEST_VERSION} ${PREVIOUS_VERSION}
-    # then
-    #     if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
+    if version_greater_equal ${LATEST_VERSION} ${PREVIOUS_VERSION}
+    then
+        if [ "$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION" ]
+        then
+            echo "Move current version to previous versions."
+        fi
+    else 
+        if [ "$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION" ]
+        then
+            echo "Move deployment version to previous versions."
+        fi
+    fi
+        # if ["$CUT_PREVIOUS_VERSION" != "$CUT_LATEST_VERSION"]
     #     then
     #         echo "Move current version to previous versions."
     # else 
