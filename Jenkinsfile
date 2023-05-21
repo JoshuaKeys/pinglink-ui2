@@ -32,10 +32,28 @@ pipeline {
                 }
             }
         }
-        stage('Publish Npm Library') {
-            steps {
+        // stage('Publish Npm Library') {
+        //     steps {
+        //         nodejs(nodeJSInstallationName: 'nodejs') {
+        //             sh 'npm run semantic-release'
+        //         }
+        //     }
+        // }
+        stage('Deployment') {
+            when {
+                branch 'master'
+            }
+
+            steps{
                 nodejs(nodeJSInstallationName: 'nodejs') {
-                    sh 'npm run semantic-release'
+                    script {
+                        SERVER = 'storybook.pinglink.keyssoft.xyz';
+                        TMP_DEST = '/app/tmp/pinglink-ui'
+                        DEST = '/app/pinglink-ui'
+                        FUNCTIONAL_USER = 'dsp_adm'
+
+                        env.LATEST_VERSION = sh(script: "git describe --tags --abbrev=0", returnStdout: true).trim()
+                    }
                 }
             }
         }
