@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/JoshuaKeys/pinglink-ui/compare/v1.6.0...v1.7.0) (2023-05-21)
+
+
+### Features
+
+* **introduction:** added more docs ([3c59970](https://github.com/JoshuaKeys/pinglink-ui/commit/3c59970456b18b5ba42e672c2f74ccb9fac2a98a))
+
 # [1.6.0](https://github.com/JoshuaKeys/pinglink-ui/compare/v1.5.0...v1.6.0) (2023-05-21)
 
 
