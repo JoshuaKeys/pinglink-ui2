@@ -33,6 +33,7 @@ move_versions() {
             echo "Move deployment version to previous versions."
     fi
 
+    echo "$LATEST_VERSION $PREVIOUS_VERSION"
     rm -rf ${DEST}
     mv ${TMP_DEST} ${DEST}
     save_versions_list
