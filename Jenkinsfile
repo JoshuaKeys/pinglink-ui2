@@ -47,7 +47,7 @@ pipeline {
             steps{
                 nodejs(nodeJSInstallationName: 'nodejs') {
                     script {
-                        SERVER = 'storybook.pinglink.keyssoft.xyz';
+                        SERVER = 'pinglink-ui.keyssoft.xyz';
                         TMP_DEST = '/app/tmp/pinglink-ui'
                         DEST = '/app/pinglink-ui'
                         FUNCTIONAL_USER = 'dsp_adm'
