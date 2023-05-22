@@ -7,4 +7,5 @@ import { Component, Input } from "@angular/core";
 })
 export class PLButtonComponent {
     @Input() label: string = '';
+    @Input() size: 'small' | 'large' = 'small';
 }
