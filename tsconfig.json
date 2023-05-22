@@ -19,6 +19,9 @@
     "paths": {
       "pinglink-ui": [
         "dist/pinglink-ui"
+      ],
+      "pinglink-ui-lib": [
+        "dist/pinglink-ui-lib"
       ]
     },
     "target": "ES2022",

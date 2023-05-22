@@ -1,6 +1,6 @@
 {
     "branches": ["master"],
-    "repositoryUrl": "git@github.com:JoshuaKeys/pinglink-ui.git",
+    "repositoryUrl": "git@github.com:JoshuaKeys/pinglink-ui2.git",
     "tagFormat": "v${version}",
     "plugins": [
         "@semantic-release/commit-analyzer",
@@ -11,7 +11,7 @@
         }],
         ["@semantic-release/npm", {
             "npmPublish": true,
-            "pkgRoot": "dist/pinglink-ui"
+            "pkgRoot": "dist/pinglink-ui-lib"
         }],
         "@semantic-release/github",
         ["@semantic-release/git", {

@@ -8,8 +8,9 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "storybook": "ng run pinglink-ui:storybook",
-    "build:pinglink": "ng build pinglink-ui",
-    "build-storybook": "ng run pinglink-ui:build-storybook",
+    "build:pinglink-ui-lib": "ng build pinglink-ui-lib",
+    "build:pinglink-ui-lib-storybook": "ng run pinglink-ui-lib:build-storybook",
+    "build:pinglink-ui-storybook": "ng run pinglink-ui:build-storybook",
     "semantic-release": "semantic-release --branches master"
   },
   "private": true,

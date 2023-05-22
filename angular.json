@@ -53,6 +53,60 @@
           }
         }
       }
+    },
+    "pinglink-ui-lib": {
+      "projectType": "library",
+      "root": "projects/pinglink-ui-lib",
+      "sourceRoot": "projects/pinglink-ui-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/pinglink-ui-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pinglink-ui-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pinglink-ui-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/pinglink-ui-lib/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "configDir": "projects/pinglink-ui-lib/.storybook",
+            "browserTarget": "pinglink-ui-lib:build",
+            "compodoc": false,
+            "port": 6006
+          }
+        },
+        "build-storybook": {
+          "builder": "@storybook/angular:build-storybook",
+          "options": {
+            "configDir": "projects/pinglink-ui-lib/.storybook",
+            "browserTarget": "pinglink-ui-lib:build",
+            "compodoc": false,
+            "outputDir": "dist/storybook/pinglink-ui-lib"
+          }
+        }
+      }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
